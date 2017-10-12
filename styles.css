@@ -72,7 +72,7 @@ button a{
 
 /* Slideshow container */
 .slideshow-container {
-  max-width: 1000px;
+  max-width: 300px;
   position: relative;
   margin: auto;
 }
@@ -159,4 +159,6 @@ button a{
 @keyframes fade {
   from {opacity: .4}
   to {opacity: 1}
+}
+Video { width: 50%;
 }

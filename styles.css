@@ -1,164 +1,238 @@
 /* media Gallery styles*/
-
-footer p {
-  color: black inherit;
-  text-align: center;
+h1, h2, h3, h4, h5, h6, p, ul, ol, li {
+	padding: 0;
+	margin: 0;
 }
-*, *::after {
-  box-sizing: border-box;
-}
+/*-- Layout Styles
+--*/
 body {
-  width: 85%;  /*-- sets width of whole body to 85% --*/
-  margin: 0 auto;  /*-- centers the whole body --*/
-  background-color: white;}
+	font-family: Roboto;
+	font-size: 16px;
+	font-weight: 300;
+	overflow-x: hidden;
 }
-img {
-  width: 100%;
+a {
+	font-weight: 700;
+	color: darkgreen;
+	text-decoration: none;
 }
-.wrapper {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+a:visited {
+	color: darkgreen;
 }
-.outer {
-  padding: 20px;
+a:hover {
+	color: green;
 }
-@media screen and (min-width: 550px) {.outer {width: 50%;}
+a:active {
 }
-@media screen and (min-width: 1024px){.outer {width: 30%;}}
-@media screen and (min-width: 1280px){.outer {width: 25%;}}
+h1, h2 {
+	font-family: 'Roboto Slab';
+	font-weight: 300;
+}
+.container {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+.container > div {
+	min-height: 150px;
+	min-width: 150px;
+	box-sizing: border-box;
+}
+.container {
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-flow: row wrap;
+	flex-flow: row wrap;
+}
+.cr, .c1, .c2, .c3, .c4, .c5, .c6, .c7, .c8, .c9, .c10, .c11, .c12, .c13, .c14 {
+	width: 100%;
+}
+div.cr {
+	display: flex;
+	min-height: 0px;
+}
+.cr > h1 {
+	font-family: 'Roboto Slab';
+	font-size: 3rem;
+	font-weight: 100;
+	transition: 0.5s;
+	color: #FFF;
+}
+span.tagline {
+	font-size: 1rem;
+	color: gold;
+	font-weight: 700;
+	transition: 0.5s;
+}
+.feeds h1 {
+	margin-bottom: 0;
+	padding: 28px 16px 16px 32px;
+}
+.feeds ul {
+	list-style: none;
+	padding-right: 16px;
+	padding-left: 32px;
+	line-height: 1.1;
+}
+.feeds li {
+	margin-bottom: 20px;
+	line-height: 1.1;
+	font-size: 16px;
+}
 
+.feeds li:hover {
+	background-color: #F9F9F9;
+}
+/*-- Card Styles
+--*/
 .card {
-  border: 1px solid #800000;
-  background-color: #800000
+	display: flex;
+	flex-direction: column;
+	position: relative;
 }
-.card-text {
-  padding: 0 20px;
+.card-img img {
+	width: 100%;
+	height: auto;
 }
-h1 {
-  text-align: center;
-  font-family: 'Alegreya Sans', sans-serif;
-  color:black;
+.card-img {
+	display: flex;
 }
-h4 {
-  text-align: center;
-font-family: 'Roboto Slab', serif;
-color: white;
-font-size: 20px}
-p {
-  text-align: center;
-  color: white;
-  font-family: 'Alegreya Sans', sans-serif;
-  font-size: 20px;}
-
-button {
-  background-color: gray;
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  text-align: center;
-  display: inline-block;
-  font-size: 16px;
-  font-family: 'Roboto Slab', serif;
+.caption {
+	display: flex;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: transparent;
+	opacity: 0;
+	transition: 0.5s;
+	padding: 12px 12px;
 }
-button:hover {
-  background-color: #333;
+.caption:hover {
+	background-color: rgba(0,0,0,0.3);
+	opacity: 1;
 }
-button a{
-  text-decoration: none;
-  color: white;
+.card-title {
 }
-* {box-sizing:border-box}
-
-/* Slideshow container */
-.slideshow-container {
-  max-width: 300px;
-  position: relative;
-  margin: auto;
+.card-subtitle {
+	position: absolute;
+	bottom: 12px;
 }
-
-.mySlides {
-    display: none;
+.caption a {
+	color: white;
 }
-
-/* Next & previous buttons */
-.prev, .next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  margin-top: -22px;
-  padding: 16px;
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
+.caption a:hover {
+	color: white;
 }
-
-/* Position the "next button" to the right */
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
+/*-- Utility Classes
+--*/
+.shadow-2 {
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12); }
 }
-
-/* On hover, add a black background color with a little bit see-through */
-.prev:hover, .next:hover {
-  background-color: rgba(0,0,0,0.8);
+.block-ctr {
+	display: block;
+	margin: 0 auto;
 }
-
-/* Caption text */
-.text {
-  color: #f2f2f2;
-  font-size: 15px;
-  padding: 8px 12px;
-  position: absolute;
-  bottom: 8px;
-  width: 100%;
-  text-align: center;
+.resp-img {
+	width: 100%;
+	height: auto;
 }
-
-/* Number text (1/3 etc) */
-.numbertext {
-  color: #f2f2f2;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
+/*-- Media Queries
+--*/
+@media (min-width: 600px) {
+	.c3, .c4, .c5, .c6, .c7, .c8, .c9, .c10, .c11, .c12, .c13, .c14 {
+		width: 50%;
+	}
+	.cr > h1 {
+		font-size: 6rem;
+		padding-bottom: 18px;
+		line-height: 1;
+	}
+	span.tagline {
+		font-size: 1rem;
+	}
 }
-
-/* The dots/bullets/indicators */
-.dot {
-  cursor:pointer;
-  height: 13px;
-  width: 13px;
-  margin: 0 2px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.6s ease;
+@media (min-width: 800px) {
+	.c3, .c4, .c5, .c6, .c7, .c8, .c9, .c10, .c11, .c12, .c13, .c14  {
+		width: 25%;
+	}
+	.cr > h1 {
+		font-size: 10rem;
+		padding-bottom: 24px;
+		line-height: 1;
+	}
+	span.tagline {
+		font-size: 2rem;
+	}
 }
-
-.active, .dot:hover {
-  background-color: #717171;
+@media (min-width: 1000px) {
+	.c1 {
+		width: 60%;
+	}
+	.c2 {
+		width: 40%;
+	}
 }
-
-/* Fading animation */
-.fade {
-  -webkit-animation-name: fade;
-  -webkit-animation-duration: 1.5s;
-  animation-name: fade;
-  animation-duration: 1.5s;
+/*-- Demo divs
+--*/
+.cr {
+  color: #ddd;
+  background-color: darkgreen;
 }
-
-@-webkit-keyframes fade {
-  from {opacity: .4}
-  to {opacity: 1}
+.c1 {
+  color: #ddd;
+  background-color: #FFF;
 }
-
-@keyframes fade {
-  from {opacity: .4}
-  to {opacity: 1}
+.c2 {
+  color: #222;
+  background-color: #fff;
 }
-Video { width: 50%;
+.c3 {
+  color: #333;
+  background-color: #b4d2f7;
+}
+.c4 {
+  color: #333;
+  background-color: #d5dfef;
+}
+.c5 {
+  color: #333;
+  background-color: #dfe1e5;
+}
+.c6 {
+  color: #333;
+  background-color: #ccc;
+}
+.c7 {
+  color: #ddd;
+  background-color: #003476;
+}
+.c8 {
+  color: #ddd;
+  background-color: #0062d2;
+}
+.c9 {
+  color: #333;
+  background-color: #b4d2f7;
+}
+.c10 {
+  color: #333;
+  background-color: #d5dfef;
+}
+.c11 {
+  color: #333;
+  background-color: #dfe1e5;
+}
+.c12 {
+  color: #333;
+  background-color: #ccc;
+}
+.c13 {
+  color: #333;
+  background-color: #dfe1e5;
+}
+.c14 {
+  color: #333;
+  background-color: #ccc;
 }

@@ -1,241 +1,140 @@
-/* media Gallery styles*/
-h1, h2, h3, h4, h5, h6, p, ul, ol, li {
-	padding: 0;
-	margin: 0;
+*, *::after { /*-- selects everything and everything::after --*/
+  box-sizing: border-box; /*-- calculates padding as size of box --*/
 }
-/*-- Layout Styles
---*/
-body {
-	font-family: Roboto;
-	font-size: 16px;
-	font-weight: 300;
-	overflow-x: hidden;
+#page {
+  width: 85%; /*-- restricts page width --*/
+  margin: 0 auto; /*-- uses auto margin to center everything --*/
 }
-p {
-  text-align: center;
+/*-- Rules for Grid --*/
+.container { /*-- selects wrapper element --*/
+  margin-top: 3em;
+  display: grid; /*-- sets display to grid --*/
+  grid-template-columns: 1fr; /*-- sets the columns to 1 at smallest screen sizes --*/
+  grid-template-rows: auto; /*-- auto numbering of rows --*/
+  grid-gap: 3em 1em; /*-- sets top-bottom and left-right space between grid cells --*/
 }
-a {
-	font-weight: 700;
-	color: darkgreen;
-	text-decoration: none;
+@media screen and (min-width: 550px) {  /*-- for screens above 550px  --*/
+  .container {grid-template-columns: repeat(2, 1fr);} /*-- increases column count to 2--*/
+  .card:first-child {grid-column: 1/ span 2;} /*-- allow first item to span 2 cells when screen is larger--*/
 }
-a:visited {
-	color: darkgreen;
+@media screen and (min-width: 1024px) { /*-- for screens above 1024px  --*/
+  .container {grid-template-columns: repeat(3, 1fr);} /*-- increase column count to 3 --*/
 }
-a:hover {
-	color: green;
+@media screen and (min-width: 1280px) { /*-- for screens above 1280px  --*/
+  .container {grid-template-columns: repeat(4, 1fr);} /*-- increase column count to 4 --*/
 }
-a:active {
-}
-h1, h2 {
-	font-family: 'Roboto Slab';
-	font-weight: 300;
-}
-.container {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-}
-.container > div {
-	min-height: 150px;
-	min-width: 150px;
-	box-sizing: border-box;
-}
-.container {
-	display: -webkit-flex;
-	display: flex;
-	-webkit-flex-flow: row wrap;
-	flex-flow: row wrap;
-}
-.cr, .c1, .c2, .c3, .c4, .c5, .c6, .c7, .c8, .c9, .c10, .c11, .c12, .c13, .c14 {
-	width: 100%;
-}
-div.cr {
-	display: flex;
-	min-height: 0px;
-}
-.cr > h1 {
-	font-family: 'Roboto Slab';
-	font-size: 3rem;
-	font-weight: 100;
-	transition: 0.5s;
-	color: #FFF;
-}
-span.tagline {
-	font-size: 1rem;
-	color: gold;
-	font-weight: 700;
-	transition: 0.5s;
-}
-.feeds h1 {
-	margin-bottom: 0;
-	padding: 28px 16px 16px 32px;
-}
-.feeds ul {
-	list-style: none;
-	padding-right: 16px;
-	padding-left: 32px;
-	line-height: 1.1;
-}
-.feeds li {
-	margin-bottom: 20px;
-	line-height: 1.1;
-	font-size: 16px;
-}
-
-.feeds li:hover {
-	background-color: #F9F9F9;
-}
-/*-- Card Styles
---*/
 .card {
-	display: flex;
-	flex-direction: column;
-	position: relative;
+  position: relative; /*-- positions each card so children can be positioned --*/
+  border: 1px solid #ccc; /*-- crappy border --*/
+  padding: 8px; /*-- small space inside each card--*/
 }
-.card-img img {
-	width: 100%;
-	height: auto;
+video {
+  width: 100%;
 }
-.card-img {
-	display: flex;
+.thumb { /*-- card images --*/
+  background-image: url('pix/sample.png'); /*-- sets background image --*/
+  padding-bottom: 60%; /*-- creates space below the image--*/
+  background-size: cover; /*-- sets it to cover the div --*/
+  background-position: center center; /*-- positions image in center vert. and horiz. --*/
 }
-.caption {
-	display: flex;
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	background-color: transparent;
-	opacity: 0;
-	transition: 0.5s;
-	padding: 12px 12px;
+.link {
+  position: absolute; /*-- sets button position to absolute --*/
+  top: .5em; /*-- half a line from the top --*/
+  right: .5em; /*-- half a line from the right--*/
+  padding: .3em .6em .4em .6em; /*-- spacing inside the button --*/
+  border-radius: 50%;
+  font-size: 22px;
+  border: none;
+  box-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+  opacity: .9;
 }
-.caption:hover {
-	background-color: rgba(0,0,0,0.3);
-	opacity: 1;
+.link:hover {
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.4);
+  opacity: 1;
 }
-.card-title {
+/*-- Styles for slideshow --*/
+.slideshow-wrapper {
+  position: relative; /*-- this allows children to be position absolutely --*/
+  margin: auto; /*-- simple centering method--*/
+  margin-top: 2em; /*-- adds space above--*/
+  max-width: 1440px; /*-- contrains slideshow on largest screens --*/
 }
-.card-subtitle {
-	position: absolute;
-	bottom: 12px;
+.slideshow-wrapper img {
+  width: 100%; /*-- makes slideshow responsive in size --*/
 }
-.caption a {
-	color: white;
+.prev, .next {
+  cursor: pointer; /*-- changes hover cursor to the hand --*/
+  position: absolute; /*-- positions arrows absolutely--*/
+  top: 50%; /*-- positions arrows half the height of parent from top --*/
+  width: auto; /*-- matches width of parent --*/
+  padding: 16px; /*-- adds a little bit of space--*/
+  margin-top: -22px; /*-- adjusts position by height of arrows --*/
+  color: white; /*-- sets color for contrast --*/
+  font-weight: bold; /*-- selects heavier font --*/
+  font-size: 18px; /*-- sets arrow font size --*/
+  transition: 0.6s ease; /*-- sets transition speed for arrow hover--*/
+  border-radius: 0 3px 3px 0; /*-- slightly rounds inside borders --*/
 }
-.caption a:hover {
-	color: white;
+.next {
+  right: 0; /*-- positions next arrow hard right --*/
+  border-radius: 3px 0 0 3px; /*-- rounds the outside borders --*/
 }
-/*-- Utility Classes
---*/
-.shadow-2 {
-	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12); }
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8); /*-- gives a background for contrast on hover --*/
 }
-.block-ctr {
-	display: block;
-	margin: 0 auto;
+.text-center {
+  text-align: center; /*-- aligns indicators center --*/
 }
-.resp-img {
-	width: 100%;
-	height: auto;
+.captiontext {
+  background: rgba(0,0,0,0.4);
+  color: #f2f2f2; /*-- sets color to almost white --*/
+  font-size: 22px; /*-- sets font size --*/
+  padding: 8px 12px; /*-- sets caption padding --*/
+  position: absolute; /*-- positions caption text absolutely--*/
+  bottom: 8px; /*-- sets position 8px from bottom --*/
+  width: 100%; /*-- sets width equal to container width --*/
+  text-align: center; /*-- aligns text center --*/
 }
-/*-- Media Queries
---*/
-@media (min-width: 600px) {
-	.c3, .c4, .c5, .c6, .c7, .c8, .c9, .c10, .c11, .c12, .c13, .c14 {
-		width: 50%;
-	}
-	.cr > h1 {
-		font-size: 6rem;
-		padding-bottom: 18px;
-		line-height: 1;
-	}
-	span.tagline {
-		font-size: 1rem;
-	}
+.numberof {
+  color: #f2f2f2; /*-- sets color to almost white --*/
+  font-size: 12px; /*-- sets font size --*/
+  padding: 8px 12px; /*-- sets numberof padding --*/
+  position: absolute; /*-- positions numberof text absolutely--*/
+  top: 0; /*-- sets position hard to the top--*/
 }
-@media (min-width: 800px) {
-	.c3, .c4, .c5, .c6, .c7, .c8, .c9, .c10, .c11, .c12, .c13, .c14  {
-		width: 25%;
-	}
-	.cr > h1 {
-		font-size: 10rem;
-		padding-bottom: 24px;
-		line-height: 1;
-	}
-	span.tagline {
-		font-size: 2rem;
-	}
+.indicator {
+  cursor:pointer; /*-- changes hover cursor to the hand --*/
+  height: auto; /*-- sets height of dots --*/
+  width: 24%; /*-- sets width of dots --*/
+  margin: 0 2px; /*-- adds margin between dots --*/
+  background-color: #bbb; /*-- sets background color to light gray --*/
+  display: inline-block; /*-- displays in a horizontal line --*/
+  transition: background-color 0.6s ease; /*-- allows background change to take time --*/
+  opacity: .5;
 }
-@media (min-width: 1000px) {
-	.c1 {
-		width: 60%;
-	}
-	.c2 {
-		width: 40%;
-	}
+.indicator img {
+  width: 100% !important;
 }
-/*-- Demo divs
---*/
-.cr {
-  color: #ddd;
-  background-color: darkgreen;
+.active, .indicator:hover {
+  background-color: #717171; /*-- changes background color on hover/active to darker gray  --*/
+  opacity: 1;
 }
-.c1 {
-  color: #ddd;
-  background-color: #FFF;
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade; /*-- webkit prefix  --*/
+  -webkit-animation-duration: 1.5s; /*-- webkit prefix --*/
+  animation-name: fade; /*-- defines which animation to use --*/
+  animation-duration: 1.5s; /*-- sets the duration --*/
 }
-.c2 {
-  color: #222;
-  background-color: #fff;
+@-webkit-keyframes fade { /*-- webkit prefix --*/
+  from {opacity: .4}
+  to {opacity: 1}
 }
-.c3 {
-  color: #333;
-  background-color: #b4d2f7;
+@keyframes fade { /*-- sets "fade" animation properties --*/
+  from {opacity: .4} /*-- sets start of animation --*/
+  to {opacity: 1} /*-- sets end of animation --*/
 }
-.c4 {
-  color: #333;
-  background-color: #d5dfef;
-}
-.c5 {
-  color: #333;
-  background-color: #dfe1e5;
-}
-.c6 {
-  color: #333;
-  background-color: #ccc;
-}
-.c7 {
-  color: #ddd;
-  background-color: #003476;
-}
-.c8 {
-  color: #ddd;
-  background-color: #0062d2;
-}
-.c9 {
-  color: #333;
-  background-color: #b4d2f7;
-}
-.c10 {
-  color: #333;
-  background-color: #d5dfef;
-}
-.c11 {
-  color: #333;
-  background-color: #dfe1e5;
-}
-.c12 {
-  color: #333;
-  background-color: #ccc;
-}
-.c13 {
-  color: #333;
-  background-color: #dfe1e5;
-}
-.c14 {
-  color: #333;
-  background-color: #ccc;
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .prev, .next,.text {font-size: 11px}
 }

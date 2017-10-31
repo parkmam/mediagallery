@@ -33,6 +33,10 @@
 video {
   width: 100%;
 }
+img {
+  width: 50%
+}
+}
 .thumb { /*-- card images --*/
   background-image: url('pix/sample.png'); /*-- sets background image --*/
   padding-bottom: 60%; /*-- creates space below the image--*/

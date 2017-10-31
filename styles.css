@@ -4,6 +4,8 @@
 #page {
   width: 85%; /*-- restricts page width --*/
   margin: 0 auto; /*-- uses auto margin to center everything --*/
+  background:tan;
+  color: white;
 }
 /*-- Rules for Grid --*/
 .container { /*-- selects wrapper element --*/
